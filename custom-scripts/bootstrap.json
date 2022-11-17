@@ -1,0 +1,12 @@
+{
+  "ignition": {
+    "config": {
+      "merge": [{
+        "source": "http://localhost/bootstrap.ign", 
+        "verification": {}
+        }]
+    },
+    "timeouts": {},
+    "version": "3.2.0"
+  }
+}
