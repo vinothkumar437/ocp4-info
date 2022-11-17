@@ -7,8 +7,11 @@ with open('bootstrap.ign', 'r') as f:
 
 files = ignition['storage'].get('files', [])
 
-infra_id = os.environ.get('INFRA_ID', 'openshift').encode()
-hostname_b64 = base64.standard_b64encode(infra_id + b'-bootstrap\n').decode().strip()
+host_name = "boot.abc.example.com"
+#infra_id = os.environ.get('INFRA_ID', 'openshift').encode()
+infra_id = host_name.encode()
+#hostname_b64 = base64.standard_b64encode(infra_id + b'-bootstrap\n').decode().strip()
+hostname_b64 = base64.standard_b64encode(infra_id).decode().strip()
 files.append(
 {
     'path': '/etc/hostname',
