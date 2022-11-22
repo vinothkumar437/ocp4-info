@@ -1,0 +1,47 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: build-deploy
+spec:
+  params:
+  - name: buildRevision
+    description: description
+  - name: appGitUrl
+    description: the application url
+  - name: appImage
+    description: the application
+  workspaces:
+  - name: app-source
+   
+  tasks:
+  - name: build
+    taskRef:
+      name: build-and-push
+    params:
+    - name: buildRevision
+      value: $(params.buildRevision)
+    - name: appGitUrl
+      value: $(params.appGitUrl)
+    - name: appImage
+      value: $(params.appImage)
+    workspaces:
+    - name: app-source
+      workspace: app-source
+
+  - name: deploy
+    taskRef:
+      name: deploy-openshift
+    runAfter:
+    - build
+    params:
+    - name: deployMent
+      value: "tekton-deployment"
+    - name: buildRevision
+      value: $(params.buildRevision)
+    - name: appImage
+      value: $(params.appImage)
+    workspaces:
+    - name: app-source
+      workspace: app-source
+      
