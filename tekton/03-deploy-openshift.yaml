@@ -23,7 +23,7 @@ spec:
     - |-
       oc apply -f $(params.k8sDirectory)
       
-  - name: apply-config
+  - name: patch-config
     image: quay.io/openshift/origin-cli:4.8.0
     workingDir: "$(workspaces.app-source.path)"
     command: ['/bin/bash', '-c']
