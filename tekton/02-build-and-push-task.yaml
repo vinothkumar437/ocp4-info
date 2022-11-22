@@ -26,3 +26,23 @@ spec:
       value: $(params.buildRevision)
     - name: WORKSPACE_OUTPUT_PATH
       value: $(workspaces.app-source.path)
+      
+
+# scripts
+    script: |
+      export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
+      CHECKOUT_DIR="${WORKSPACE_OUTPUT_PATH}"
+      rm -rf "$CHECKOUT_DIR"/*
+      rm -rf "$CHECKOUT_DIR"/.[!.]*
+      rm -rf "$CHECKOUT_DIR"/..?*
+      cd "$CHECKOUT_DIR"
+      git clone --branch "${PARAM_REVISION}" "${PARAM_URL}"
+      var1=$(echo "${PARAM_URL}" | awk '{split($0,a,"/");print a[5]}')
+      echo $var1
+      var2=$(echo $var1 | awk '{split($0,a,".");print a[1]}')
+      echo $var2
+      mv $var2/* ${WORKSPACE_OUTPUT_PATH}
+      rm -rf $var2
+      git config --global user.name "tkn pipelines"
+      git config --global user.email "you@example.com"
+      ls "$CHECKOUT_DIR"
