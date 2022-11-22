@@ -1,0 +1,32 @@
+---
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: build-deploy-template
+spec:
+  params:
+  - name: buildRevision
+    description: git
+  - name: appGitUrl
+    description: git
+  - name: appImage
+  resourcetemplates:
+  - apiVersion: tekton.dev/v1beta1
+    kind: PipelineRun
+    metadata:
+      generateName: build-deploy-
+    spec:
+      pipelineRef:
+        name: build-deploy
+      serviceAcountName: tekton-cicd-sa
+      params:
+      - name: buildRevision
+        value: $(tt.params.buildRevision)
+      - name: appGitUrl
+        value: $(tt.params.appGitUrl)
+      - name: appImage
+        value: "new image url"
+      workspaces:
+      - name: app-source
+         persistentVolumeClaim:
+           claimName: tekton-claim
