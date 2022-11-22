@@ -1,0 +1,39 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: deploy-openshift
+spec:
+  params:
+  - name: k8sDirectory
+    default: config/
+  - name: deployMent
+  - name: buildRevision
+  - name: appImage
+  
+  workspaces:
+  - name: app-source
+  
+  steps:
+  - name: apply-config
+    image: quay.io/openshift/origin-cli:4.8.0
+    workingDir: "$(workspaces.app-source.path)"
+    command: ['/bin/bash', '-c']
+    args:
+    - |-
+      oc apply -f $(params.k8sDirectory)
+      
+  - name: apply-config
+    image: quay.io/openshift/origin-cli:4.8.0
+    workingDir: "$(workspaces.app-source.path)"
+    command: ['/bin/bash', '-c']
+    args:
+    - |-
+      oc patch deployment $(params.deployMent) --patch='{"spec":{"template":{"spec":{
+        "containers":[{ 
+           "name": "$(params.deployMent)",
+           "image": "$(params.appImage):$(params.buildRevision)"
+        }]
+      }}}}'
+      
+      
