@@ -1,0 +1,28 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: build-and-push
+spec:
+  # parameters 
+  params:
+  - name: buildRevision
+  - name: appGitUrl
+  - name: appImage
+  
+  # workspaces
+  workspaces:
+  - name: app-source
+   
+  # steps
+  steps:
+  - name: clone
+    image: registry.redhat.io/openshift-pipelines/pipelines-git-init-rhel8@sha256:dc64f60840f12168420cdc7248cafbefc56b11f509cb7532819db8af910e8273
+    workingDir: "$(workspaces.app-source.path)"
+    env:
+    - name: PARAM_URL
+      value: $(params.appGitUrl)
+    - name: PARAM_REVISION
+      value: $(params.buildRevision)
+    - name: WORKSPACE_OUTPUT_PATH
+      value: $(workspaces.app-source.path)
