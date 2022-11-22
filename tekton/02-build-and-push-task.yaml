@@ -46,3 +46,26 @@ spec:
       git config --global user.name "tkn pipelines"
       git config --global user.email "you@example.com"
       ls "$CHECKOUT_DIR"
+      
+  - name: build
+    image: quay.io/buildah/stable:v1.28.0
+    workingDir: "$(workspaces.app-source.path)"
+    command: ['buildah', 'bud', 'format=oci', '--tls-verify=false', '--layers', '-f', 'Dockerfile', '-t', '$(params.appImage):$(params.buildRevision)', '.']
+    volumeMounts:
+    - name: varlibcontainers
+      mountPath: /var/lib/containers
+    securityContext:
+      privileged: true
+      
+  - name: push
+    image: quay.io/buildah/stable:v1.28.0
+    command: ["buildah", "push", "--tls-verify=false", "$(params.appImage):$(params.buildRevision)", "docker.io//$(params.appImage):$(params.buildRevision)"]
+    volumeMounts:
+    - name: varlibcontainers
+      mountPath: /var/lib/containers
+    securityContext:
+      privileged: true
+      
+  volumes:
+  - name: varlibcontainers
+    emptyDir: {}
