@@ -1,0 +1,11 @@
+---
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: build-and-deploy-binding
+spec:
+  params:
+  - name: appGitUl
+    value: $(body.repoistory.clone_url)
+  - name: buildRevision
+    value: $(body.pull_request.head.ref)
