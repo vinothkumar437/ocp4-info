@@ -1,0 +1,24 @@
+---
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListner
+metadata:
+  name: tekton-cicd-event
+spec:
+  serviceAccountName: tekton-cicd-sa
+  serviceType: NodePort
+  triggers:
+  - name: pull-request-build-and-deploy
+    interceptors:
+    - github:
+        eventTypes:
+        - pull_request
+    - cell:
+        filter: "body.action == 'opened'"
+    template:
+      ref: build-deploy-template
+    bindings:
+      - ref: build-deploy-binding
+      
+      
+      
+      
