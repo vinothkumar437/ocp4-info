@@ -13,3 +13,4 @@
 13. Tekton Tasks <a href="https://github.com/redhat-scholars/tekton-tutorial/tree/master/tasks">click here</a>
 14. Tekton catapp <a href="https://github.com/ncskier/catapp/tree/master/tekton">click here</a>
 15. jenkins cicd <a href="https://github.com/net-vinothkumar/devops-cicd-demo">click here</a>
+16. OpenShift GitOps <a href="https://rhthsa.github.io/openshift-demo/gitops.html">click here</a>
