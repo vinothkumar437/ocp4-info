@@ -3,3 +3,4 @@
 3. knative docs <a href="https://github.com/knative/docs/tree/main/docs">click here</a>
 4. ansible for devops <a href="https://github.com/geerlingguy/ansible-for-devops">click here</a>
 5. ansible playbooks <a href="https://github.com/adithyakhamithkar/ansible-playbooks">click here</a>
+6. cloud native CI/CD with tekton and argocd <a href="https://blog.sebastian-daschner.com/entries/cloud-native-ci-cd-tekton-argocd-video-course">click here</a>
