@@ -7,3 +7,4 @@
 7. Install ArgoCD on OpenShift <a href="https://computingforgeeks.com/how-to-install-argocd-on-openshift-cluster/">click here</a>
 8. knative tutorial <a href="https://redhat-developer-demos.github.io/knative-tutorial/knative-tutorial/index.html">click here</a>
 9. openshift ci/cd reference <a href="https://github.com/siamaksade">click here</a>
+10. Accessing Redhat Quay <a href="https://access.redhat.com/solutions/3533201">click here</a>
