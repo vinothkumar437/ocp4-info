@@ -10,3 +10,4 @@
 10. Accessing Redhat Quay <a href="https://access.redhat.com/solutions/3533201">click here</a>
 11. Redhat Scholar Tekton Tutorial <a href="https://redhat-scholars.github.io/tekton-tutorial/tekton-tutorial/index.html">click here</a>
 12. Tekton Catalog <a href="https://github.com/open-toolchain/tekton-catalog">click here</a>
+13. Tekton Tasks <a href="https://github.com/redhat-scholars/tekton-tutorial/tree/master/tasks">click here</a>
