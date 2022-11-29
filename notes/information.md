@@ -5,3 +5,4 @@
 5. ansible playbooks <a href="https://github.com/adithyakhamithkar/ansible-playbooks">click here</a>
 6. cloud native CI/CD with tekton and argocd <a href="https://blog.sebastian-daschner.com/entries/cloud-native-ci-cd-tekton-argocd-video-course">click here</a>
 7. Install ArgoCD on OpenShift <a href="https://computingforgeeks.com/how-to-install-argocd-on-openshift-cluster/">click here</a>
+8. knative tutorial <a href="https://redhat-developer-demos.github.io/knative-tutorial/knative-tutorial/index.html">click here</a>
