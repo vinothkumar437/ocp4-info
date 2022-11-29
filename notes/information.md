@@ -8,3 +8,4 @@
 8. knative tutorial <a href="https://redhat-developer-demos.github.io/knative-tutorial/knative-tutorial/index.html">click here</a>
 9. openshift ci/cd reference <a href="https://github.com/siamaksade">click here</a>
 10. Accessing Redhat Quay <a href="https://access.redhat.com/solutions/3533201">click here</a>
+11. Redhat Scholar Tekton Tutorial <a href="https://redhat-scholars.github.io/tekton-tutorial/tekton-tutorial/index.html">click here</a>
